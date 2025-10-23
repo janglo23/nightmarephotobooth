@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nightmare Before Christmas Photobooth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🎃 Nightmare Before Christmas  🎃</h1>
+            <p class="subtitle">Capture your spookiest moments!</p>
+            <p class="subtitle">Content Services!</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Camera Section -->
+            <div class="camera-section">
+                <video id="video" autoplay muted></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+                <!-- Countdown Overlay -->
+                <div id="countdownOverlay" class="countdown-overlay" style="display: none;">
+                    <div class="countdown-content">
+                        <div class="countdown-number" id="countdownNumber">4</div>
+                        <div class="countdown-text" id="countdownText">Get Ready!</div>
+                        <div class="countdown-photo-info" id="countdownPhotoInfo">Photo 1 of 2</div>
+                    </div>
+                </div>
+                
+                
+                <div class="controls">
+                    <div class="photo-count-selector">
+                        <label for="photoCount">Number of Photos:</label>
+                        <select id="photoCount">
+                            <option value="2" selected>2 Photos</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Filter Controls -->
+                    <div class="filter-controls">
+                        <label for="filterIntensity" id="filterLabel">Light Spooky (15%)</label>
+                        <input type="range" id="filterIntensity" min="0" max="1" step="0.05" value="0.15" class="filter-slider">
+                        <button id="filterPreview" class="btn btn-secondary">
+                            👁️ Preview Filter
+                        </button>
+                    </div>
+                    
+                    <button id="startCamera" class="btn btn-primary">
+                        👻 Start Camera
+                    </button>
+                    
+                    <button id="capturePhoto" class="btn btn-capture" disabled>
+                        📸 Take Photo (<span id="photoCounter">0</span>/<span id="totalPhotos">2</span>)
+                    </button>
+                    
+                    <button id="resetPhotos" class="btn btn-secondary" disabled>
+                        🔄 Reset Photos
+                    </button>
+                    
+                    <button id="downloadPhotos" class="btn btn-download" disabled>
+                        💾 Download Collage
+                    </button>
+                </div>
+            </div>
+
+            <!-- Photos Grid -->
+            <div class="photos-grid" id="photosGrid">
+                
+                <div class="photo-placeholder">
+                    <div class="placeholder-content">
+                        <span class="skull">💀</span>
+                        <p>Photo 1</p>
+                    </div>
+                </div>
+                <div class="photo-placeholder">
+                    <div class="placeholder-content">
+                        <span class="skull">💀</span>
+                        <p>Photo 2</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Result Display -->
+            <div class="final-result" id="finalResult" style="display: none;">
+                <div class="final-result-header">
+                    <h2>🎭 Your Spooky Masterpiece! 🎭</h2>
+                    <p>Your nightmare before Christmas collage is complete!</p>
+                </div>
+                <div class="final-image-container">
+                    <canvas id="finalCanvas" class="final-canvas"></canvas>
+                </div>
+                <div class="final-actions">
+                    <button id="downloadFinal" class="btn btn-download">
+                        💾 Download Your Masterpiece
+                    </button>
+                    <button id="startOver" class="btn btn-secondary">
+                        🔄 Start New Session
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>🕷️ This is Halloween, Content Services Team 🕷️</p>
+        </footer>
+    </div>
+
+    <!-- Photo Enlargement Overlay -->
+    <div id="photoEnlargeOverlay" class="photo-enlarge-overlay" style="display: none;">
+        <div class="photo-enlarge-content">
+            <img id="enlargedPhoto" class="enlarged-photo" src="" alt="Enlarged Photo">
+            <button id="closeEnlarge" class="close-enlarge-btn">✕</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
